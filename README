@@ -1,21 +1,71 @@
-This is module that lets you take pdfs that contain certain adventures (listed in the application),
-and export them to a format that is compatible with Foundry Virtual Tabletop for the Pathfinder
-2nd edition system.
+# PDF to Foundry (PF2e)
 
-To use, follow the following steps:
+This module lets you take PDFs containing certain Pathfinder 2nd Edition adventures (listed below) and export them into a format that is compatible with Foundry Virtual Tabletop.
 
-* Download the module into your FoundryVTT instance on the setup page under modules. Either find It
-  in the list of modules or paste in the following url as the manifest json:
+**Compatibility:**
+* **FoundryVTT:** Version 14
+* **Pathfinder 2E System:** Version 8.5.1
 
-  https://github.com/digennarot/pdftofoundry/releases/latest/download/module.json
+## Dependencies
 
-* In your world, go to the settings tab, under module settings find the PDF to
-  Foundry module and enable it by clicking the checkbox.
-* Go to the settings tab, and click the "Import PDF" button.
-* Choose a PDF to import from your hard drive, and select the import option.
-  Please be patient as it imports your PDF.
-* You should now see the items from your PDF in your Foundry world.
+* This module requires the **Pathfinder 2e System** to be installed and active in your Foundry world.
 
-It will not work with modified or pirated PDFs.
+## How to Use
 
-For personal use only.
+To use this module, follow these steps:
+
+1. **Download the module:** Go to your FoundryVTT instance's setup page. Under the Modules tab, either find it in the list of modules or paste the following URL as the manifest JSON:
+   `https://github.com/digennarot/pdftofoundry/releases/latest/download/module.json`
+2. **Enable in your world:** Load into your world, go to the Settings tab, find the PDF to Foundry module under Manage Modules, and enable it by clicking the checkbox.
+3. **Open the importer:** Go to the Settings tab and click the "Import PDF" button.
+4. **Import your file:** Choose a PDF to import from your hard drive and select the import option. *Please be patient as it imports your PDF.*
+5. **View your assets:** You should now see the items, scenes, and journals from your PDF in your Foundry world.
+
+## Supported PDFs
+
+The module supports importing the following official digital releases. *(Note: Newer adventure paths are officially produced by Paizo as premium Foundry modules and are not supported by this third-party importer).*
+
+### Adventure Paths
+* Age of Ashes (Books 1-6)
+* Extinction Curse (Books 1-6)
+* Agents of Edgewatch (Books 1-6)
+* Abomination Vaults (Books 1-3)
+* Fists of the Ruby Phoenix (Books 1-3)
+* Strength of Thousands (Books 1-6)
+* Quest for the Frozen Flame (Books 1-3)
+* Outlaws of Alkenstar (Books 1-3)
+* Blood Lords (Books 1-6)
+* Gatewalkers (Books 1-3)
+
+### Standalone Adventures
+* Pathfinder 2e Beginner Box (Menace Under Otari)
+* The Fall of Plaguestone
+* The Slithering
+* Troubles in Otari
+* Malevolence
+* Night of the Gray Death
+* Shadows at Sundown
+* Crown of the Kobold King
+
+### Rulebooks & Bestiaries
+*(Used primarily to import official, high-resolution token artwork for creatures already built into the PF2e system)*
+* Bestiary 1
+* Bestiary 2
+* Bestiary 3
+
+### Organized Play
+* Pathfinder Society Quests & Scenarios (Seasons 1 through 4)
+* Pathfinder Bounties (Bounties #1 through #21+)
+
+## Important Notes
+
+* **No modified files:** It will not work with modified or pirated PDFs. Your PDF must be the official digital download from Paizo and retain its original watermark.
+* **Licensing:** For personal use only.
+
+## Support & Issues
+
+If you encounter an issue where a supported PDF fails to import, please ensure you have re-downloaded a fresh copy directly from your Paizo account downloads page. If issues persist, please open a ticket on the [GitHub Issues page](https://github.com/digennarot/pdftofoundry/issues).
+
+## Credits
+
+Developed and maintained by digennarot (fryguy).
