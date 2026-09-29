@@ -1,34 +1,72 @@
 name: PDFToFoundry CD
 
+# Every push to the release branch runs the tests and publishes a GitHub release.
+# If the version in module.json already has a release, the patch number is bumped
+# automatically (in the released files only; no commit is made back to the repo).
 on:
   push:
     branches: [release]
   workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Update Manifest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run tests
+        run: npm test
+
+      - name: Compute release version
         run: |
-          SYSTEM_VERSION=$(jq -r '.version' ./pdftofoundry/module.json)
-          jq --arg download "https://github.com/${{ github.repository }}/releases/download/$SYSTEM_VERSION/pdftofoundry.zip" '.download |= $download' ./pdftofoundry/module.json > TMP && mv TMP ./pdftofoundry/module.json
-          echo "systemVersion=$SYSTEM_VERSION" >> $GITHUB_ENV
+          VERSION=$(jq -r '.version' ./pdftofoundry/module.json)
+          git fetch --tags --quiet
+          while git rev-parse -q --verify "refs/tags/$VERSION" >/dev/null; do
+            MAJOR_MINOR=${VERSION%.*}
+            PATCH=${VERSION##*.}
+            VERSION="$MAJOR_MINOR.$((PATCH + 1))"
+          done
+          echo "Releasing $VERSION"
+          echo "systemVersion=$VERSION" >> "$GITHUB_ENV"
 
-      - name: Zip Files
+      - name: Update manifest
+        run: |
+          BASE="https://github.com/${{ github.repository }}"
+          jq --arg version "$systemVersion" \
+             --arg url "$BASE/" \
+             --arg bugs "$BASE/issues" \
+             --arg changelog "$BASE/blob/release/pdftofoundry/CHANGELOG.md" \
+             --arg manifest "$BASE/releases/latest/download/module.json" \
+             --arg download "$BASE/releases/download/$systemVersion/pdftofoundry.zip" \
+             '.version = $version | .url = $url | .bugs = $bugs | .changelog = $changelog | .manifest = $manifest | .download = $download' \
+             ./pdftofoundry/module.json > TMP && mv TMP ./pdftofoundry/module.json
+
+      - name: Zip files
         run: zip pdftofoundry.zip -r pdftofoundry
 
-      - name: Create Version Release
-        id: create_version_release
+      - name: Create release
         uses: ncipollo/release-action@v1
         with:
           name: ${{ env.systemVersion }}
+          tag: ${{ env.systemVersion }}
+          commit: ${{ github.sha }}
+          generateReleaseNotes: true
           allowUpdates: false
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "./pdftofoundry/module.json,./pdftofoundry.zip"
-          tag: ${{ env.systemVersion }}
