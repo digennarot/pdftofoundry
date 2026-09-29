@@ -1,21 +1,23 @@
-This is module that lets you take pdfs that contain certain adventures (listed in the application),
-and export them to a format that is compatible with Foundry Virtual Tabletop for the Pathfinder
-2nd edition system.
+# PDF to Foundry (PF2e)
 
-To use, follow the following steps:
+This module lets you take PDFs containing certain Pathfinder 2nd Edition adventures (listed in the application) and export them into a format that is compatible with Foundry Virtual Tabletop.
 
-* Download the module into your FoundryVTT instance on the setup page under modules. Either find It
-  in the list of modules or paste in the following url as the manifest json:
+**Compatibility:**
+* **FoundryVTT:** Version 14
+* **Pathfinder 2E System:** Version 8.5.1
 
-  https://github.com/digennarot/pdftofoundry/releases/latest/download/module.json
+## How to Use
 
-* In your world, go to the settings tab, under module settings find the PDF to
-  Foundry module and enable it by clicking the checkbox.
-* Go to the settings tab, and click the "Import PDF" button.
-* Choose a PDF to import from your hard drive, and select the import option.
-  Please be patient as it imports your PDF.
-* You should now see the items from your PDF in your Foundry world.
+To use this module, follow these steps:
 
-It will not work with modified or pirated PDFs.
+1. **Download the module:** Go to your FoundryVTT instance's setup page. Under the Modules tab, either find it in the list of modules or paste the following URL as the manifest JSON:
+   `https://github.com/digennarot/pdftofoundry/releases/latest/download/module.json`
+2. **Enable in your world:** Load into your world, go to the Settings tab, find the PDF to Foundry module under Manage Modules, and enable it by clicking the checkbox.
+3. **Open the importer:** Go to the Settings tab and click the "Import PDF" button.
+4. **Import your file:** Choose a PDF to import from your hard drive and select the import option. *Please be patient as it imports your PDF.*
+5. **View your assets:** You should now see the items, scenes, and journals from your PDF in your Foundry world.
 
-For personal use only.
+## Important Notes
+
+* **No modified files:** It will not work with modified or pirated PDFs.
+* **Licensing:** For personal use only.
