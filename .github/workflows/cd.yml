@@ -15,7 +15,7 @@ jobs:
       - name: Update Manifest
         run: |
           SYSTEM_VERSION=$(jq -r '.version' ./pdftofoundry/module.json)
-          jq --arg download "https://github.com/fryguy1013/pdftofoundry/releases/download/$SYSTEM_VERSION/pdftofoundry.zip" '.download |= $download' ./pdftofoundry/module.json > TMP && mv TMP ./pdftofoundry/module.json
+          jq --arg download "https://github.com/${{ github.repository }}/releases/download/$SYSTEM_VERSION/pdftofoundry.zip" '.download |= $download' ./pdftofoundry/module.json > TMP && mv TMP ./pdftofoundry/module.json
           echo "systemVersion=$SYSTEM_VERSION" >> $GITHUB_ENV
 
       - name: Zip Files
