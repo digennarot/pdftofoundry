@@ -7,7 +7,7 @@ To use, follow the following steps:
 * Download the module into your FoundryVTT instance on the setup page under modules. Either find It
   in the list of modules or paste in the following url as the manifest json:
 
-  https://github.com/fryguy1013/pdftofoundry/releases/latest/download/module.json
+  https://github.com/digennarot/pdftofoundry/releases/latest/download/module.json
 
 * In your world, go to the settings tab, under module settings find the PDF to
   Foundry module and enable it by clicking the checkbox.
