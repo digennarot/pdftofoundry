@@ -82,3 +82,19 @@ test('uses the compendium actor art for image and token', async () => {
   assert.equal(info.token, 'tok/WARG.webp');
   assert.equal(info.name, 'Actor WARG');
 });
+
+test('places tokens near the matching area pin, honouring quantities', () => {
+  const { pfsCollectNpcs } = load([]);
+  const scene = { journals: [{ x: 750, y: 2550, name: 'A.' }, { x: 900, y: 900, name: 'B.' }], tokens: [] };
+  const adv = { npcs: [], scenes: [scene] };
+  pfsCollectNpcs(adv, { name: 'A. Falls', text: { content:
+    '<h4 data-monster-id="1">Mountain Goats (3) - CREATURE 0</h4><h4 data-monster-id="2">Ogre - CREATURE 3</h4>' +
+    '<h4 data-monster-id="3">Spike Trap - Hazard 1</h4>' } });
+  assert.equal(scene.tokens.length, 4);
+  assert.deepEqual(scene.tokens.map(t => t.id), ['auto-mountaingoats', 'auto-mountaingoats', 'auto-mountaingoats', 'auto-ogre']);
+  assert.deepEqual([scene.tokens[0].x, scene.tokens[0].y], [750, 2650]);
+  assert.ok(scene.tokens.every(t => t.y >= 2650 && t.x >= 750));
+  // an entry for another area must not add tokens to pin A
+  pfsCollectNpcs(adv, { name: 'C. Elsewhere', text: { content: '<h4 data-monster-id="9">Warg - CREATURE 2</h4>' } });
+  assert.equal(scene.tokens.length, 4);
+});
