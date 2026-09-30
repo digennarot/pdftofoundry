@@ -55,3 +55,18 @@ test('skips creatures with no compendium match without throwing', async () => {
   pfsCollectNpcs(adv, { text: { content: '<h4 data-monster-id="a1">Nobody - Creature 1</h4>' } });
   assert.equal(await adv.npcs[0].generate({}, {}), undefined);
 });
+
+test('handles plural group names and Tough/Mangy/Wounded variants', async () => {
+  const { pfsCollectNpcs } = load([pack('pathfinder-bestiary', [
+    { name: 'Wolf', _id: 'WOLF' }, { name: 'Mountain Goat', _id: 'GOAT' }, { name: 'Orc Brute', _id: 'BRUTE' },
+  ])]);
+  const adv = { npcs: [] };
+  pfsCollectNpcs(adv, { text: { content:
+    '<h4 data-monster-id="1">Wolves (3) - CREATURE 1</h4>' +
+    '<h4 data-monster-id="2">Mangy Wolves (2) - CREATURE -1</h4>' +
+    '<h4 data-monster-id="3">Tough Mountain Goats (4) - CREATURE 1</h4>' +
+    '<h4 data-monster-id="4">Wounded Orc Brutes (2) - CREATURE -1</h4>' } });
+  const res = [];
+  for (const n of adv.npcs) { const r = await n.generate({}, {}); res.push([r[0].split('.').pop(), n.elite, n.weak]); }
+  assert.deepEqual(res, [['WOLF', false, false], ['WOLF', false, true], ['GOAT', true, false], ['BRUTE', false, true]]);
+});
