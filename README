@@ -36,6 +36,7 @@ The module supports importing the following official digital releases. *(Note: N
 * Outlaws of Alkenstar (Books 1-3)
 * Blood Lords (Books 1-6)
 * Gatewalkers (Books 1-3)
+* Vaultlines (imports the full campaign as journals, grouped by chapter, with its illustrations; each battle map panel becomes a scene with area pins, and stat blocks become actors, taken from the PF2e compendia where the book reuses a bestiary creature and built from the stat block otherwise)
 
 ### Standalone Adventures
 * Pathfinder 2e Beginner Box (Menace Under Otari)

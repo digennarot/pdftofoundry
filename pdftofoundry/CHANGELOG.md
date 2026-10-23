@@ -1,3 +1,21 @@
+## 6.2.0
+
+- Add support for importing the Vaultlines Adventure Path: every chapter, the campaign overview, Lattiskar
+  gazetteer, Darklands dangers and adventure toolbox become journals (areas with their encounter levels, sidebars,
+  tables, stat blocks and hazards included), plus the book's illustrations and its 27 maps as images
+- Vaultlines: every gridded map panel becomes its own scene (47 in all), with the grid measured from the map and
+  journal pins on the area labels; the region and city maps without a grid stay image journals
+- Vaultlines: stat blocks become actors. Creatures reprinted from a PF2e bestiary, and short "variant of" stat blocks,
+  are imported from the system compendia (as elite or weak where the book says so); the book's own creatures and
+  hazards are built from their stat blocks, with spells, focus spells and rituals taken from the PF2e spell compendium,
+  and abilities printed as "As vault builder, but DC 29" taken from that creature (in the book or the PF2e bestiaries)
+  with the book's change applied. Stat block headings link to their actor, and each area's creatures are placed as
+  hidden tokens next to its pin
+- Vaultlines: built creatures with telepathy, light blindness, fast healing, void healing or regeneration also get
+  that ability on their sheet, with the PF2e glossary text and rules (healing, regeneration deactivation), as Monster
+  Core creatures do
+- Feybound: curse stat blocks now show their level right-aligned, like creatures and hazards
+
 ## 6.1.0
 
 - Add support for importing Feybound: every chapter becomes a journal (sidebars, ancestries, archetypes, creature
