@@ -1,3 +1,9 @@
+## 6.1.0
+
+- Add support for importing Feybound: every chapter becomes a journal (sidebars, ancestries, archetypes, creature
+  stat blocks and the First World gazetteer included), plus the book's illustrations and the Yestereve Revels map
+- Detect Feybound before other adventures, as some detectors match common words that appear in its text
+
 ## 5.0.0
 
 - Update to v12
