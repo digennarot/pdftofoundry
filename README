@@ -21,6 +21,18 @@ To use this module, follow these steps:
 4. **Import your file:** Choose a PDF to import from your hard drive and select the import option. *Please be patient as it imports your PDF.*
 5. **View your assets:** You should now see the items, scenes, and journals from your PDF in your Foundry world.
 
+## Translating an Import with Babele
+
+With [Babele](https://foundryvtt.com/packages/babele) active, a book you imported can be translated (for example into Italian):
+
+1. In the Settings tab, click **Translate with Babele**, pick the book and click **Save to Compendium**. Its journals, scenes and actors are saved as one Adventure in a world compendium named after the book.
+2. Click **Export Template** (or use Babele's export on that compendium) and unzip the downloaded `world.pdftofoundry-<book>.json`.
+3. Translate the text in that file, keeping its keys as they are.
+4. Back in the dialog, set the language (e.g. `it`), choose the translated file and click **Load Translation**. It is saved in the world's Babele translation directory (`pdftofoundry-babele/<language>/` unless you set another one in Babele's settings).
+5. Open the compendium and import the adventure: the translated journals, scenes and actors replace the English ones, with their links and tokens intact.
+
+Translation files contain the book's text, so they are for personal use and are not shipped with this module.
+
 ## Supported PDFs
 
 The module supports importing the following official digital releases. *(Note: Newer adventure paths are officially produced by Paizo as premium Foundry modules and are not supported by this third-party importer).*
@@ -70,4 +82,4 @@ If you encounter an issue where a supported PDF fails to import, please ensure y
 
 ## Credits
 
-Developed and maintained by digennarot (fryguy).
+Developed and maintained by digennarot.

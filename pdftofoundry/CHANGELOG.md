@@ -1,3 +1,11 @@
+## 6.3.0
+
+- Add "Translate with Babele" (Settings tab, under Import PDF): saves an imported book's journals, scenes and actors
+  to a world Adventure compendium that Babele can translate, opens Babele's template export for it, and loads the
+  translated JSON into the world's Babele translation directory (set to `pdftofoundry-babele` if the world has none).
+  Importing the translated adventure from the compendium replaces the book in the world and keeps its links, pins
+  and tokens. Translation files are never shipped with the module
+
 ## 6.2.0
 
 - Add support for importing the Vaultlines Adventure Path: every chapter, the campaign overview, Lattiskar
